@@ -3,7 +3,7 @@ export class PriceCheck {
     Whole: RegExp;
 
     constructor() {
-        this.Decimal = new RegExp('^[+ 0-9]{5}$');
-        this.Whole = new RegExp('^[0-9]d{0,9}(.d{1,2})?%?$');
+        this.Decimal = new RegExp('^[0-9]d{0,9}(.d{1,2})?%?$');
+        this.Whole = new RegExp('^d+$');
     }
 }

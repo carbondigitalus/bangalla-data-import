@@ -1,1 +1,1 @@
-export { default as ShopifyCSVTemplate } from './ShopifyCSVTemplate';
+export { default as BangallaCSVTemplate } from './BangallaCSVTemplate';

@@ -4,7 +4,7 @@ const tsDBConnect = require('typeorm');
 require('reflect-metadata');
 
 // imports
-import { ShopifyCSVTemplate } from './db/entity';
+import { BangallaCSVTemplate } from './db/entity';
 
 // Enable Config File
 dotenv.config({
@@ -21,7 +21,7 @@ tsDBConnect
         password: process.env.DB_PASSWORD,
         database: process.env.DB_NAME,
         logging: true,
-        entities: [ShopifyCSVTemplate]
+        entities: [BangallaCSVTemplate]
     })
     .then(() => {
         // here you can start to work with your entities
