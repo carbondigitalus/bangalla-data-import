@@ -13,144 +13,145 @@ import {
     MinLength,
     Min
 } from 'class-validator';
-import { Column, PrimaryGeneratedColumn, Entity } from 'typeorm';
+import { BaseEntity, Column, Entity, Generated, PrimaryColumn } from 'typeorm';
 import 'reflect-metadata';
 
 // Custom Modules
 import { PriceCheck } from '../../enums';
 
-@Entity()
-export default class BangallaCSVTemplate {
+@Entity('bangalla_product_list')
+export default class BangallaCSVTemplate extends BaseEntity {
     // COLUMNS
-    @PrimaryGeneratedColumn('uuid')
+    @PrimaryColumn({ type: 'varchar', length: 36, unique: true })
+    @Generated('uuid')
     @IsNotEmpty()
     id: number;
 
-    @Column({ name: 'Product Name' })
+    @Column()
     @IsString()
     @IsNotEmpty()
     productName: string;
 
-    @Column({ name: 'SKU' })
+    @Column()
     @IsNumber()
     @IsNotEmpty()
     @Min(10000)
     @MinLength(5)
     sku: number;
 
-    @Column({ name: 'UPC' })
+    @Column()
     @IsNumber()
     @IsNotEmpty()
     @Length(12)
     upc: number;
 
-    @Column({ name: 'Bangalla Public Price' })
+    @Column()
     @IsNumber()
     @IsNotEmpty()
     @IsIn([PriceCheck.prototype.Decimal, PriceCheck.prototype.Whole])
     priceBangalla: number;
 
-    @Column({ name: 'Wholesale Price' })
+    @Column()
     @IsNumber()
     @IsNotEmpty()
     @IsIn([PriceCheck.prototype.Decimal, PriceCheck.prototype.Whole])
     priceWholesale: number;
 
-    @Column({ name: 'Gold Member Price' })
+    @Column()
     @IsNumber()
     @IsNotEmpty()
     @IsIn([PriceCheck.prototype.Decimal, PriceCheck.prototype.Whole])
     priceGold: number;
 
-    @Column({ name: 'Manufacturer' })
+    @Column()
     @IsString()
     @IsNotEmpty()
     manufacturer: string;
 
-    @Column({ name: 'Category' })
+    @Column()
     @IsString()
     @IsNotEmpty()
     category: string;
 
-    @Column({ name: 'Description, Short' })
+    @Column()
     @IsString()
     @IsNotEmpty()
     descriptionShort: string;
 
-    @Column({ name: 'Description, Long' })
+    @Column()
     @IsString()
     descriptionLong?: string;
 
-    @Column({ name: 'Weight' })
+    @Column()
     @IsNumber()
     @IsNotEmpty()
     @IsIn([PriceCheck.prototype.Decimal, PriceCheck.prototype.Whole])
     weight: number;
 
-    @Column({ name: 'Image URL' })
+    @Column()
     @IsString()
     @IsUrl()
     imageURL?: string;
 
-    @Column({ name: 'Pack Size' })
+    @Column()
     @IsString()
     @IsNotEmpty()
     packSize: string;
 
-    @Column({ name: 'Inventory' })
+    @Column()
     @IsNumber()
     @IsNotEmpty()
     @Min(0)
     inventory: number;
 
-    @Column({ name: 'MAP' })
+    @Column()
     @IsNumber()
     @IsIn([PriceCheck.prototype.Decimal, PriceCheck.prototype.Whole])
     priceMAP?: number;
 
-    @Column({ name: '3rd-Party Restrictions' })
+    @Column()
     @IsString()
     @Equals('YES')
     thirdPartyRestrictions?: string;
 
-    @Column({ name: 'Price T3' })
+    @Column()
     @IsNumber()
     @IsNotEmpty()
     @IsIn([PriceCheck.prototype.Decimal, PriceCheck.prototype.Whole])
     priceT3: number;
 
-    @Column({ name: 'Price T4' })
+    @Column()
     @IsNumber()
     @IsNotEmpty()
     @IsIn([PriceCheck.prototype.Decimal, PriceCheck.prototype.Whole])
     priceT4: number;
 
-    @Column({ name: 'Price T5' })
+    @Column()
     @IsNumber()
     @IsNotEmpty()
     @IsIn([PriceCheck.prototype.Decimal, PriceCheck.prototype.Whole])
     priceT5: number;
 
-    @Column({ name: 'Price T6' })
+    @Column()
     @IsNumber()
     @IsNotEmpty()
     @IsIn([PriceCheck.prototype.Decimal, PriceCheck.prototype.Whole])
     priceT6: number;
 
-    @Column({ name: 'Price T7' })
+    @Column()
     @IsNumber()
     @IsNotEmpty()
     @IsIn([PriceCheck.prototype.Decimal, PriceCheck.prototype.Whole])
     priceT7: number;
 
-    @Column({ name: 'Price T8' })
+    @Column()
     @IsNumber()
     @IsNotEmpty()
     @IsIn([PriceCheck.prototype.Decimal, PriceCheck.prototype.Whole])
     priceT8: number;
 
-    @Column({ name: 'BSKU' })
+    @Column()
     @IsString()
     @IsNotEmpty()
-    bSKU: string;
+    skuB: string;
 }
